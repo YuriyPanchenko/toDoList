@@ -18,4 +18,11 @@ public class Message {
 
     private String title;
     private String text;
+
+    public Message(String title, String text) {
+        this.title = title;
+        this.text = text;
+    }
 }
+
+
