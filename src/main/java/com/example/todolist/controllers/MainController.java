@@ -2,10 +2,7 @@ package com.example.todolist.controllers;
 
 import com.example.todolist.models.Message;
 import com.example.todolist.repository.MessageRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,8 +20,40 @@ public class MainController {
     }
 
     @PostMapping(path = "/")
-    public List<Message> indexPot(@RequestBody Message message){
-        messageRepository.save(message);
-        return (List<Message>)messageRepository.findAll();
+    public Message indexPot(@RequestBody Message message){
+
+
+        return messageRepository.save(message);
     }
+
+    @PutMapping(path = "/{id}")
+    public Message indexPut(@PathVariable Long id, @RequestBody Message newMessage){
+        return messageRepository
+                .findById(id)
+                .map(innerMessage -> messageRepository.save(
+                        new Message(innerMessage.getId(),
+                                    newMessage.getTitle(),
+                                    newMessage.getText())
+                )).orElseGet(() ->{
+                    newMessage.setId(id);
+                    return messageRepository.save(newMessage);
+                });
+    }
+
+
 }
+
+/*@PutMapping("/employees/{id}")
+  Employee replaceEmployee(@RequestBody Employee newEmployee, @PathVariable Long id) {
+
+        return repository.findById(id)
+        .map(employee -> {
+        employee.setName(newEmployee.getName());
+        employee.setRole(newEmployee.getRole());
+        return repository.save(employee);
+        })
+        .orElseGet(() -> {
+        newEmployee.setId(id);
+        return repository.save(newEmployee);
+        });
+        }*/
