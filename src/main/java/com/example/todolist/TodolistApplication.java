@@ -17,7 +17,7 @@ public class TodolistApplication {
                 registry
                         .addMapping("/*")
                         .allowedOrigins(
-                                "https://todolist-backend-springboot.herokuapp.com",
+                                "https://react-todoapp-lq7.herokuapp.com",
                                 "https://liquidcore7.localtunnel.me"
                         );
             }
