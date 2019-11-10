@@ -15,7 +15,7 @@ public class TodolistApplication {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry
-                        .addMapping("/*")
+                        .addMapping("/**")
                         .allowedOrigins(
                                 "https://react-todoapp-lq7.herokuapp.com",
                                 "https://liquidcore7.localtunnel.me"
