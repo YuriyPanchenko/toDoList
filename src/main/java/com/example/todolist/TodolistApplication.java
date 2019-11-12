@@ -19,7 +19,8 @@ public class TodolistApplication {
                         .allowedOrigins(
                                 "https://react-todoapp-lq7.herokuapp.com",
                                 "https://liquidcore7.localtunnel.me"
-                        );
+                        )
+                        .allowedMethods("*");
             }
         };
         return webMvcConfigurer;
