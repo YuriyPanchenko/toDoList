@@ -21,8 +21,6 @@ public class MainController {
 
     @PostMapping(path = "/")
     public Message indexPot(@RequestBody Message message){
-
-
         return messageRepository.save(message);
     }
 
@@ -38,6 +36,11 @@ public class MainController {
                     newMessage.setId(id);
                     return messageRepository.save(newMessage);
                 });
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public void indexDelete(@PathVariable Long id){
+        messageRepository.deleteById(id);
     }
 
 
