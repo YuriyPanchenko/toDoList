@@ -18,7 +18,8 @@ public class TodolistApplication {
                         .addMapping("/**")
                         .allowedOrigins(
                                 "https://react-todoapp-lq7.herokuapp.com",
-                                "https://liquidcore7.localtunnel.me"
+                                "https://liquidcore7.localtunnel.me",
+                                "http://localhost:4200/"
                         )
                         .allowedMethods("*");
             }
